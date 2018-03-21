@@ -4,22 +4,26 @@ export const environment = {
     apiKey: 'AIzaSyBfTTLy_quPWJsIn7tGShxwhQj9K_2SHBE',
     projectId: 'deroude-f88af',
   },
-  dictionary: {
-    available: [
+  dictionary:{
+    available:[
       "en-GB",
       "ro-RO"
     ],
-    "en-GB": {
-      "projects": "Projects",
-      "education": "Education",
-      "work": "Work Experience",
-      "lang": "English"
+    "en-GB":{
+      "projects":"Projects",
+      "education":"Education",
+      "work":"Work Experience",
+      "lang":"English",
+      "from":"from",
+      "to":"to"
     },
-    "ro-RO": {
-      "projects": "Proiecte",
-      "education": "Educație",
-      "work": "Experiență",
-      "lang": "Română"
+    "ro-RO":{
+      "projects":"Proiecte",
+      "education":"Educație",
+      "work":"Experiență",
+      "lang":"Română",
+      "from":"de la",
+      "to":"până la"
     }
   }
 };
