@@ -1,20 +1,40 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<h1>Valentin Răduți</h1>
+<a *ngFor="let lang of langSvc.available" (click)="langSvc.lang=lang">{{'lang'|translate:lang}}</a>
+<!-- <img src="https://lh3.googleusercontent.com/BMmeARvQluuVUEoJ7pZdOv894ldvPFqVrFKuuXiClmGilPUdOpp6vIG8DVoZe_dOwzje9D6Jwr5UCfWqljHuvPy3xY6jxc_zKSVkDzy22KnpQaDP4yVHF8mOa3wGYXURc8katliMIRH-TvGgb069QEOareG5pvKeQUGFHmOvyohO72IgInxx02TpIoKhTCY4ifWMO_1K1cjRwIl4UgBGbKHzmM5wQ34tSM8ykH6IBEsnuGQ6oyL2Gm9uD3vJN0UxyonWN7u_6JneHC4oVOxfYalRekqpOvoFUo-Ttg32G0_n3-2e1hS069uJp9xuyHY5j0dZHUB97LkPw6d-ZXQ5SmlbD5GYBGyNTNd1Rx8eemv-UGLQr879eyfaB_ygDF4PciwHlm4XCzPjgs7IWn9n57zMc6xzpfW-RK9FCpt1G00m1CyJv4FDgfMaGRBmXNJ9bMMOBed-0ATaAeBRcuAC2iyBpaZk1rdZvtzN9bXMtIdMV4I78l2CUmLqUJKnNOM3bRRRNkVqMoh2Co01QvfpbXZ11VYWqMWf8ukPYfxe-ROlEEEbbU5Ig00HQes0ykWGz7aPgY9dfEOr2kFDet1d8R2MZmxjAwluSje8Zn3Md2I02kqn7hRaQGMH0dnckeWwzH-C6akRjMa6jdX5VHAUis1cYXoHwdxB=w1600-h673-no"> -->
+<h2>{{'work'|translate}}</h2>
+<article *ngFor="let w of work$|async">
+  <header>
+    <h3>{{w.employer}}</h3>
+    <span>{{'from'|translate}} :
+      <time [attr.datetime]="w['date-start']">{{w['date-start']|date}}</time>
+    </span>
+    <span *ngIf="w['date-end']"> {{'to'|translate}} :
+      <time [attr.datetime]="w['date-end']">{{w['date-end']|date}}</time>
+    </span>
+  </header>
+  <section>
+    <h4>{{'projects'|translate}}</h4>
+    <article *ngFor="let p of w.projectObjs">
+      <header>
+        <h5>{{p.title[langSvc.lang]}}</h5>
+      </header>
+      <p>{{p.description[langSvc.lang]}}</p>
+      <footer>
+        <span *ngFor="let t of p.technologies">{{t}}</span>
+      </footer>
+    </article>
+  </section>
+</article>
+<h2>{{'education'|translate}}</h2>
+<article *ngFor="let e of education$|async">
+  <header>
+    <h3>{{e.institution[langSvc.lang]}}</h3>
+    <span>{{'from'|translate}} :
+      <time [attr.datetime]="e['date-start']">{{e['date-start']|date}}</time>
+    </span>
+    <span *ngIf="e['date-end']"> {{'to'|translate}} :
+      <time [attr.datetime]="e['date-end']">{{e['date-end']|date}}</time>
+    </span>
+    <p>{{e.comments[langSvc.lang]}}</p>
+  </header>
+</article>
