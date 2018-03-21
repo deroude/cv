@@ -15,7 +15,9 @@ export const environment = {
       "work":"Work Experience",
       "lang":"English",
       "from":"from",
-      "to":"to"
+      "to":"to",
+      "role":"Role",
+      "technologies":"Technologies"
     },
     "ro-RO":{
       "projects":"Proiecte",
@@ -23,7 +25,9 @@ export const environment = {
       "work":"Experiență",
       "lang":"Română",
       "from":"de la",
-      "to":"până la"
+      "to":"până la",
+      "role":"Rol",
+      "technologies":"Tehnologii"
     }
   }
 };

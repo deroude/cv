@@ -1,7 +1,7 @@
 <h1>Valentin Răduți</h1>
 <a *ngFor="let lang of langSvc.available" (click)="langSvc.lang=lang">{{'lang'|translate:lang}}</a>
-<!-- <img src="https://lh3.googleusercontent.com/BMmeARvQluuVUEoJ7pZdOv894ldvPFqVrFKuuXiClmGilPUdOpp6vIG8DVoZe_dOwzje9D6Jwr5UCfWqljHuvPy3xY6jxc_zKSVkDzy22KnpQaDP4yVHF8mOa3wGYXURc8katliMIRH-TvGgb069QEOareG5pvKeQUGFHmOvyohO72IgInxx02TpIoKhTCY4ifWMO_1K1cjRwIl4UgBGbKHzmM5wQ34tSM8ykH6IBEsnuGQ6oyL2Gm9uD3vJN0UxyonWN7u_6JneHC4oVOxfYalRekqpOvoFUo-Ttg32G0_n3-2e1hS069uJp9xuyHY5j0dZHUB97LkPw6d-ZXQ5SmlbD5GYBGyNTNd1Rx8eemv-UGLQr879eyfaB_ygDF4PciwHlm4XCzPjgs7IWn9n57zMc6xzpfW-RK9FCpt1G00m1CyJv4FDgfMaGRBmXNJ9bMMOBed-0ATaAeBRcuAC2iyBpaZk1rdZvtzN9bXMtIdMV4I78l2CUmLqUJKnNOM3bRRRNkVqMoh2Co01QvfpbXZ11VYWqMWf8ukPYfxe-ROlEEEbbU5Ig00HQes0ykWGz7aPgY9dfEOr2kFDet1d8R2MZmxjAwluSje8Zn3Md2I02kqn7hRaQGMH0dnckeWwzH-C6akRjMa6jdX5VHAUis1cYXoHwdxB=w1600-h673-no"> -->
-<h2>{{'work'|translate}}</h2>
+<img src="https://lh3.googleusercontent.com/tKapWClz_nTv-VkAo-KTgkTQSv6M67dBrb549k5fimtjoEKG9eIlFi9WNxVMfmPzXw3uvirgaFlF5niPX_8u8z-JKU0uVd7XvCMSqgd_TSutWn5d0Im7apBTZ5aflyaBT03RPK5aV0vB_oyo_9j1JYDDhqZnOX0B7SEKOMTL18CASqimf5QcTk803mCswqXAJYnyY-dMGj7RnzOEyJeSNHbp48BtCFOVtlhsLwfPfpgw6DLCrtL1LgUoozib3ljvGGrtQimA1DJUDORL16Bs6NbuCiKwUirlr8fFFDEzgzlLZ7J7AHCKrORN96ndhoa5ZjTyJNT6ta9-52KuwXqbnM7iI8tqBTOm9HTqKSfiZIRkaXiPVTmgpgH_X26WKiijyFNylsqaiRwu39ZznqwQlnzRMgwlC1x8biX0VKo8P8ujw8iye_Rz6ai8TxrehSJbJ2kxl1AtiY_hl6lypjo9TlXWoptwA7N3F1VslBstpoG42ubL35GhZUnEvM_Rm0cTaf0AN7dvEpnZtRrg7-_9HEqDfqokJTcSO3oMV9uYPQN9vVqMJzQ-oS9VgHYw5EvRzT4jVW5JKnhFVFVF4lSByql_obxT9z21PF-SE67IQUGnr7gemyTRvsg4P3YIdvmS0SRFh5wm7eyNhg7s57kYEhu0MMGbgOqG=s955-no">
+<h2 id="work">{{'work'|translate}}</h2>
 <article *ngFor="let w of work$|async">
   <header>
     <h3>{{w.employer}}</h3>
@@ -11,8 +11,9 @@
     <span *ngIf="w['date-end']"> {{'to'|translate}} :
       <time [attr.datetime]="w['date-end']">{{w['date-end']|date}}</time>
     </span>
+    <h5 *ngIf="w.role">{{'role'|translate}} : {{w.role[langSvc.lang]}}</h5>
   </header>
-  <section>
+  <section *ngIf="w.projects && w.projects.length>0">
     <h4>{{'projects'|translate}}</h4>
     <article *ngFor="let p of w.projectObjs">
       <header>
@@ -20,12 +21,15 @@
       </header>
       <p>{{p.description[langSvc.lang]}}</p>
       <footer>
-        <span *ngFor="let t of p.technologies">{{t}}</span>
+        {{'technologies'|translate}} : <span *ngFor="let t of p.technologies">{{t}}</span>
+      </footer>
+      <footer>
+        {{'role'|translate}} : {{p.role[langSvc.lang]}}
       </footer>
     </article>
   </section>
 </article>
-<h2>{{'education'|translate}}</h2>
+<h2 id="education">{{'education'|translate}}</h2>
 <article *ngFor="let e of education$|async">
   <header>
     <h3>{{e.institution[langSvc.lang]}}</h3>

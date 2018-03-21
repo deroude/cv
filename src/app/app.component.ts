@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   work$: Observable<Work[]>;
   education$: Observable<Education[]>;
 
-  constructor(private titleService: Title, private langSvc: LangService, private db: AngularFirestore) { }
+  constructor(private titleService: Title, public langSvc: LangService, private db: AngularFirestore) { }
 
   ngOnInit(): void {
     this.titleService.setTitle(this.title);
