@@ -3,9 +3,11 @@
 // Core variables and mixins
 @import "assets/variables.scss";
 @import "assets/mixins.scss";
+// Components
+@import "~bootstrap/scss/bootstrap.scss";
+
 // Global CSS
 @import "assets/global.scss";
 @import "assets/nav.scss";
 @import "assets/resume-item.scss";
 @import "assets/bootstrap-overrides.scss";
-// Components

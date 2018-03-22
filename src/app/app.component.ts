@@ -9,6 +9,8 @@ import { Education } from './domain/education';
 import { Project } from './domain/project';
 import { Skill } from './domain/skill';
 import { FreeText } from './domain/free-text';
+import fontawesome from '@fortawesome/fontawesome';
+import { faSkype, faGithub, faFacebook, faLinkedin } from '@fortawesome/fontawesome-free-brands';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +29,9 @@ export class AppComponent implements OnInit {
   freeTexts: FreeText[];
   navCollapsed: boolean = true;
 
-  constructor(private titleService: Title, private langSvc: LangService, private db: AngularFirestore) { }
+  constructor(private titleService: Title, private langSvc: LangService, private db: AngularFirestore) {
+    fontawesome.library.add(faSkype, faFacebook, faGithub, faLinkedin);
+  }
 
   ngOnInit(): void {
     this.titleService.setTitle(this.title);
