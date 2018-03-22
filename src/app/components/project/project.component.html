@@ -1,0 +1,9 @@
+<div class="resume-item d-flex flex-column flex-md-row mb-5">
+  <div class="resume-content mr-auto">
+    <h4>{{project.title[i18n.lang]}}</h4>
+    <div *ngIf="project.role" class="subheading mb-3">{{project.role[i18n.lang]}}</div>
+    <p>{{project.description[i18n.lang]}}</p>
+    {{'technologies'|translate}} :
+    <span *ngFor="let t of project.technologies" class="badge badge-secondary mr-1" >{{t}}</span>
+  </div>
+</div>

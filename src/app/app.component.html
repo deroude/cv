@@ -1,44 +1,128 @@
-<h1>Valentin Răduți</h1>
-<a *ngFor="let lang of langSvc.available" (click)="langSvc.lang=lang">{{'lang'|translate:lang}}</a>
-<img src="https://lh3.googleusercontent.com/tKapWClz_nTv-VkAo-KTgkTQSv6M67dBrb549k5fimtjoEKG9eIlFi9WNxVMfmPzXw3uvirgaFlF5niPX_8u8z-JKU0uVd7XvCMSqgd_TSutWn5d0Im7apBTZ5aflyaBT03RPK5aV0vB_oyo_9j1JYDDhqZnOX0B7SEKOMTL18CASqimf5QcTk803mCswqXAJYnyY-dMGj7RnzOEyJeSNHbp48BtCFOVtlhsLwfPfpgw6DLCrtL1LgUoozib3ljvGGrtQimA1DJUDORL16Bs6NbuCiKwUirlr8fFFDEzgzlLZ7J7AHCKrORN96ndhoa5ZjTyJNT6ta9-52KuwXqbnM7iI8tqBTOm9HTqKSfiZIRkaXiPVTmgpgH_X26WKiijyFNylsqaiRwu39ZznqwQlnzRMgwlC1x8biX0VKo8P8ujw8iye_Rz6ai8TxrehSJbJ2kxl1AtiY_hl6lypjo9TlXWoptwA7N3F1VslBstpoG42ubL35GhZUnEvM_Rm0cTaf0AN7dvEpnZtRrg7-_9HEqDfqokJTcSO3oMV9uYPQN9vVqMJzQ-oS9VgHYw5EvRzT4jVW5JKnhFVFVF4lSByql_obxT9z21PF-SE67IQUGnr7gemyTRvsg4P3YIdvmS0SRFh5wm7eyNhg7s57kYEhu0MMGbgOqG=s955-no">
-<h2 id="work">{{'work'|translate}}</h2>
-<article *ngFor="let w of work$|async">
-  <header>
-    <h3>{{w.employer}}</h3>
-    <span>{{'from'|translate}} :
-      <time [attr.datetime]="w['date-start']">{{w['date-start']|date}}</time>
-    </span>
-    <span *ngIf="w['date-end']"> {{'to'|translate}} :
-      <time [attr.datetime]="w['date-end']">{{w['date-end']|date}}</time>
-    </span>
-    <h5 *ngIf="w.role">{{'role'|translate}} : {{w.role[langSvc.lang]}}</h5>
-  </header>
-  <section *ngIf="w.projects && w.projects.length>0">
-    <h4>{{'projects'|translate}}</h4>
-    <article *ngFor="let p of w.projectObjs">
-      <header>
-        <h5>{{p.title[langSvc.lang]}}</h5>
-      </header>
-      <p>{{p.description[langSvc.lang]}}</p>
-      <footer>
-        {{'technologies'|translate}} : <span *ngFor="let t of p.technologies">{{t}}</span>
-      </footer>
-      <footer>
-        {{'role'|translate}} : {{p.role[langSvc.lang]}}
-      </footer>
-    </article>
-  </section>
-</article>
-<h2 id="education">{{'education'|translate}}</h2>
-<article *ngFor="let e of education$|async">
-  <header>
-    <h3>{{e.institution[langSvc.lang]}}</h3>
-    <span>{{'from'|translate}} :
-      <time [attr.datetime]="e['date-start']">{{e['date-start']|date}}</time>
-    </span>
-    <span *ngIf="e['date-end']"> {{'to'|translate}} :
-      <time [attr.datetime]="e['date-end']">{{e['date-end']|date}}</time>
-    </span>
-    <p>{{e.comments[langSvc.lang]}}</p>
-  </header>
-</article>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">{{title}}</span>
+        <span class="d-none d-lg-block">
+            <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://lh3.googleusercontent.com/6flpArd5rtP1rT0HMOKQnnVn-cm6ApitFkQaClrNOSQp7TS64x0aW_C_rIOCYCapoM22uh0yuBy6akh6BtH7czFxTURbgY_ZWK5h6tBXbAw0rrmq9lEs0NCuL2MEtcXgDqrrZZ2OAHBa6uUPldkXZraHpGL3A2THdv6VgwLhdoy9aVk6mPaKbE1ycR8CHXycPfBehfuNZ5GgSPnoaiao-47zRYwVocoklGk3N7xQsu6FPMdnxarPQDYohgxQQsDCXqDbnv_GZ4yI0EC_XcdqkFldGqMmrp9kGgPx0V2AuGCyx8pl-27sCBNRalIb_65vGcOreATuL49vTU2WW9huvdfLEknhj6ZyQjERSNm2P8ACEHEo_3B8NpcE8zAzfm25rnxDpI7GneCs9rX4Ij45fWUrM4sE9unf-aaoZa3Y9P4AwQoQL0ca2ZIt0ENnT863no_jtr6a5lFZlidHuETT2v7h2DPde7hj7n99pbdBeA87flmk1tz2CRo9eYXdZvBukzyXg05M7aCd7UzHZ4CatEYVexA0LOxrJ7L61CyYkL6Zd1SjEUyzovw8fhU9gsu_eT3Ebe0WVT4GKdLjvmQyKoXGcuOP1U5w6tTKtLjd8RXbtUffPEcvgDV9mLcJEpm941OjDQALL28FcoCrjJf6xF_oyzEghPKa=w927-h984-no"
+                alt="">
+        </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        [attr.aria-expanded]="!navCollapsed" aria-label="Toggle navigation" (click)="navCollapsed = !navCollapsed">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="navCollapsed">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#about">{{'about'|translate}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#experience">{{'experience'|translate}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#education">{{'education'|translate}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#skills">{{'skills'|translate}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#interests">{{'interests'|translate}}</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid p-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="my-auto">
+            <h1 class="mb-0">Valentin
+                <span class="text-primary">Răduți</span>
+            </h1>
+            <div class="subheading mb-5">Full Stack Software Engineer</div>
+            <p class="mb-5" *ngIf="freeTexts">{{getFreeText('intro')}}</p>
+            <ul class="list-inline list-social-icons mb-0">
+                <li class="list-inline-item">
+                    <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+        <div class="my-auto">
+            <h2 class="mb-5">{{'experience'|translate}}</h2>
+            <work *ngFor="let w of work$|async" [work]="w"></work>
+        </div>
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+        <div class="my-auto">
+            <h2 class="mb-5">{{'education'|translate}}</h2>
+            <education *ngFor="let e of education$|async" [education]="e"></education>
+        </div>
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+        <div class="my-auto">
+            <h2 class="mb-5">{{'skills'|translate}}</h2>
+
+            <div class="subheading mb-3">{{'back-end'|translate}}</div>
+            <ul class="list-inline list-icons">
+                <skill *ngFor="let s of skillsBE$|async" [skill]="s"></skill>
+            </ul>
+
+            <div class="subheading mb-3">{{'front-end'|translate}}</div>
+            <ul class="list-inline list-icons">
+                <skill *ngFor="let s of skillsFE$|async" [skill]="s"></skill>
+            </ul>
+
+            <div class="subheading mb-3">{{'db'|translate}}</div>
+            <ul class="list-inline list-icons">
+                <skill *ngFor="let s of skillsDB$|async" [skill]="s"></skill>
+            </ul>
+
+            <div class="subheading mb-3">{{'support'|translate}}</div>
+            <ul class="list-inline list-icons">
+                <skill *ngFor="let s of skillsSUP$|async" [skill]="s"></skill>
+            </ul>
+
+        </div>
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
+        <div class="my-auto">
+            <h2 class="mb-5">{{'interests'|translate}}</h2>
+            <p *ngIf="freeTexts">{{getFreeText('interests')}}</p>
+        </div>
+    </section>
+
+</div>

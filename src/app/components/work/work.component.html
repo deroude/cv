@@ -1,0 +1,13 @@
+<div class="resume-item d-flex flex-column flex-md-row mb-5 border-bottom">
+  <div class="resume-content mr-auto">
+    <h3 class="mb-0">{{work.employer}}</h3>
+    <div *ngIf="work.role" class="subheading mb-3">{{work.role[i18n.lang]}}</div>
+  </div>
+  <div class="resume-date text-md-right">
+    <span class="text-primary">
+      <time [attr.datetime]="work['date-start']">{{work['date-start']|date}}</time> -
+      <time *ngIf="work['date-end']" [attr.datetime]="work['date-end']">{{work['date-end']|date}}</time>
+    </span>
+  </div>
+</div>
+<project *ngFor="let p of projects$|async" [project]="p"></project>

@@ -1,0 +1,12 @@
+<div class="resume-item d-flex flex-column flex-md-row mb-5">
+  <div class="resume-content mr-auto">
+    <h3 class="mb-0">{{education.institution[i18n.lang]}}</h3>
+    <p>{{education.comments[i18n.lang]}}</p>
+  </div>
+  <div class="resume-date text-md-right">
+    <span class="text-primary">
+      <time [attr.datetime]="education['date-start']">{{education['date-start']|date}}</time> -
+      <time *ngIf="education['date-end']" [attr.datetime]="education['date-end']">{{education['date-end']|date}}</time>
+    </span>
+  </div>
+</div>
