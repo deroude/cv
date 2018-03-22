@@ -28,9 +28,11 @@ export class AppComponent implements OnInit {
   skillsSUP$: Observable<Skill[]>;
   freeTexts: FreeText[];
   navCollapsed: boolean = true;
+  i18n: LangService;
 
   constructor(private titleService: Title, private langSvc: LangService, private db: AngularFirestore) {
     fontawesome.library.add(faSkype, faFacebook, faGithub, faLinkedin);
+    this.i18n = langSvc;
   }
 
   ngOnInit(): void {

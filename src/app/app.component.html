@@ -13,19 +13,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="navCollapsed">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#about">{{'about'|translate}}</a>
+                <a class="nav-link" href="#about">{{'about'|translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#experience">{{'experience'|translate}}</a>
+                <a class="nav-link" href="#experience">{{'work'|translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#education">{{'education'|translate}}</a>
+                <a class="nav-link" href="#education">{{'education'|translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#skills">{{'skills'|translate}}</a>
+                <a class="nav-link" href="#skills">{{'skills'|translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#interests">{{'interests'|translate}}</a>
+                <a class="nav-link" href="#interests">{{'interests'|translate}}</a>
+            </li>
+            <li class="nav-item border-top">
+                <a class="nav-link" [class.active]="i18n.lang==='ro-RO'" (click)="i18n.lang='ro-RO'">{{'lang'|translate:'ro-RO'}}</a>
+                <a class="nav-link" [class.active]="i18n.lang==='en-GB'" (click)="i18n.lang='en-GB'">{{'lang'|translate:'en-GB'}}</a>
             </li>
         </ul>
     </div>
@@ -93,7 +97,7 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
         <div class="my-auto">
-            <h2 class="mb-5">{{'experience'|translate}}</h2>
+            <h2 class="mb-5">{{'work'|translate}}</h2>
             <work *ngFor="let w of work$|async" [work]="w"></work>
         </div>
     </section>
