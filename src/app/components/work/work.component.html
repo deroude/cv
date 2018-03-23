@@ -1,7 +1,16 @@
 <div class="resume-item d-flex flex-column flex-md-row mb-5 border-bottom">
   <div class="resume-content mr-auto">
-    <h3 class="mb-0">{{work.employer}}</h3>
+    <h3 class="mb-0">{{work.employer[i18n.lang]}}</h3>
     <div *ngIf="work.role" class="subheading mb-3">{{work.role[i18n.lang]}}</div>
+    <p *ngIf="work.activity">{{work.activity[i18n.lang]}}</p>
+    <h3 *ngIf="work.projects&&work.projects.length>0" class="mb-0">{{'projects'|translate}}
+      <a (click)="projectsExpanded=true" *ngIf="projectsExpanded===false">
+        <i class="fa fa-chevron-circle-right" ></i>        
+      </a>
+      <a (click)="projectsExpanded=false" *ngIf="projectsExpanded===true">
+          <i class="fa fa-chevron-circle-down" ></i>        
+        </a>
+    </h3>
   </div>
   <div class="resume-date text-md-right">
     <span class="text-primary">
@@ -10,4 +19,4 @@
     </span>
   </div>
 </div>
-<project *ngFor="let p of projects$|async" [project]="p"></project>
+<project *ngFor="let p of projects$|async" [project]="p" [class.d-none]="projectsExpanded===false" class="d-print-block"></project>

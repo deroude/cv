@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none">{{title}}</span>
+    <a class="navbar-brand js-scroll-trigger" href="#about">
+        <span class="d-block d-lg-none">{{'resume'|translate}}</span>
         <span class="d-none d-lg-block">
             <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://lh3.googleusercontent.com/6flpArd5rtP1rT0HMOKQnnVn-cm6ApitFkQaClrNOSQp7TS64x0aW_C_rIOCYCapoM22uh0yuBy6akh6BtH7czFxTURbgY_ZWK5h6tBXbAw0rrmq9lEs0NCuL2MEtcXgDqrrZZ2OAHBa6uUPldkXZraHpGL3A2THdv6VgwLhdoy9aVk6mPaKbE1ycR8CHXycPfBehfuNZ5GgSPnoaiao-47zRYwVocoklGk3N7xQsu6FPMdnxarPQDYohgxQQsDCXqDbnv_GZ4yI0EC_XcdqkFldGqMmrp9kGgPx0V2AuGCyx8pl-27sCBNRalIb_65vGcOreATuL49vTU2WW9huvdfLEknhj6ZyQjERSNm2P8ACEHEo_3B8NpcE8zAzfm25rnxDpI7GneCs9rX4Ij45fWUrM4sE9unf-aaoZa3Y9P4AwQoQL0ca2ZIt0ENnT863no_jtr6a5lFZlidHuETT2v7h2DPde7hj7n99pbdBeA87flmk1tz2CRo9eYXdZvBukzyXg05M7aCd7UzHZ4CatEYVexA0LOxrJ7L61CyYkL6Zd1SjEUyzovw8fhU9gsu_eT3Ebe0WVT4GKdLjvmQyKoXGcuOP1U5w6tTKtLjd8RXbtUffPEcvgDV9mLcJEpm941OjDQALL28FcoCrjJf6xF_oyzEghPKa=w927-h984-no"
                 alt="">
@@ -13,19 +13,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="navCollapsed">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#about">{{'about'|translate}}</a>
+                <a class="nav-link" [class.active]="selectedAnchor==='about'" href="#about">{{'about'|translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#experience">{{'work'|translate}}</a>
+                <a class="nav-link" [class.active]="selectedAnchor==='experience'" href="#experience">{{'work'|translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#education">{{'education'|translate}}</a>
+                <a class="nav-link" [class.active]="selectedAnchor==='education'" href="#education">{{'education'|translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#skills">{{'skills'|translate}}</a>
+                <a class="nav-link" [class.active]="selectedAnchor==='skills'" href="#skills">{{'skills'|translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#interests">{{'interests'|translate}}</a>
+                <a class="nav-link" [class.active]="selectedAnchor==='interests'" href="#interests">{{'interests'|translate}}</a>
             </li>
             <li class="nav-item border-top">
                 <a class="nav-link" [class.active]="i18n.lang==='ro-RO'" (click)="i18n.lang='ro-RO'">{{'lang'|translate:'ro-RO'}}</a>
@@ -37,7 +37,7 @@
 
 <div class="container-fluid p-0">
 
-    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about" #aboutAnchor>
         <div class="my-auto">
             <h1 class="mb-0">Valentin
                 <span class="text-primary">Răduți</span>
@@ -58,58 +58,24 @@
                 </a>
             </div>
             <p class="mb-5" *ngIf="freeTexts">{{getFreeText('intro')}}</p>
-            <ul class="list-inline list-social-icons mb-0">
-                <li class="list-inline-item">
-                    <a href="#">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="#">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="#">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="#">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            </ul>
         </div>
     </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience" #experienceAnchor>
         <div class="my-auto">
             <h2 class="mb-5">{{'work'|translate}}</h2>
             <work *ngFor="let w of work$|async" [work]="w"></work>
         </div>
     </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education" #educationAnchor>
         <div class="my-auto">
             <h2 class="mb-5">{{'education'|translate}}</h2>
             <education *ngFor="let e of education$|async" [education]="e"></education>
         </div>
     </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills" #skillsAnchor>
         <div class="my-auto">
             <h2 class="mb-5">{{'skills'|translate}}</h2>
 
@@ -136,7 +102,7 @@
         </div>
     </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests" #interestsAnchor>
         <div class="my-auto">
             <h2 class="mb-5">{{'interests'|translate}}</h2>
             <p *ngIf="freeTexts">{{getFreeText('interests')}}</p>

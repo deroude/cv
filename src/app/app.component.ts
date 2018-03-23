@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { LangService } from './services/lang/lang.service';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -11,6 +11,8 @@ import { Skill } from './domain/skill';
 import { FreeText } from './domain/free-text';
 import fontawesome from '@fortawesome/fontawesome';
 import { faSkype, faGithub, faFacebook, faLinkedin } from '@fortawesome/fontawesome-free-brands';
+
+const SCROLL_DELTA: number = 400;
 
 @Component({
   selector: 'app-root',
@@ -29,6 +31,12 @@ export class AppComponent implements OnInit {
   freeTexts: FreeText[];
   navCollapsed: boolean = true;
   i18n: LangService;
+  selectedAnchor: string;
+  @ViewChild('aboutAnchor') aboutAnchor: ElementRef;
+  @ViewChild('experienceAnchor') experienceAnchor: ElementRef;
+  @ViewChild('educationAnchor') educationAnchor: ElementRef;
+  @ViewChild('skillsAnchor') skillsAnchor: ElementRef;
+  @ViewChild('interestsAnchor') interestsAnchor: ElementRef;
 
   constructor(private titleService: Title, private langSvc: LangService, private db: AngularFirestore) {
     fontawesome.library.add(faSkype, faFacebook, faGithub, faLinkedin);
@@ -48,6 +56,12 @@ export class AppComponent implements OnInit {
 
   getFreeText(arg: string): string {
     return this.freeTexts.find(ft => ft.slug === arg).text[this.langSvc.lang];
+  }
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    this.selectedAnchor = [this.aboutAnchor, this.experienceAnchor, this.educationAnchor, this.skillsAnchor, this.interestsAnchor].reverse()
+      .find(a => a.nativeElement.offsetTop <= window.scrollY + SCROLL_DELTA).nativeElement.id;
   }
 
 }

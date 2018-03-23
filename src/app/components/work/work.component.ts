@@ -4,6 +4,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Project } from '../../domain/project';
 import { Work } from '../../domain/work';
+import fontawesome from '@fortawesome/fontawesome';
+import { faChevronCircleRight, faChevronCircleDown } from '@fortawesome/fontawesome-free-solid'
 
 @Component({
   selector: 'work',
@@ -13,17 +15,26 @@ import { Work } from '../../domain/work';
 export class WorkComponent implements OnInit {
 
   i18n: LangService;
-  projects$:Observable<Project[]>;
+  projects$: Observable<Project[]>;
 
   @Input()
-  work:Work;
+  work: Work;
+
+  projectsExpanded:boolean=false;
 
   constructor(private langSvc: LangService, private db: AngularFirestore) {
     this.i18n = langSvc;
+    fontawesome.config.autoReplaceSvg=false;
+    fontawesome.library.add(faChevronCircleDown, faChevronCircleRight);
   }
 
   ngOnInit() {
-    this.projects$=this.db.collection<Project>("projects",ref=>ref.where("work","==",this.work.slug)).valueChanges();
+    this.projects$ = this.db.collection<Project>("projects", ref => ref.where("work", "==", this.work.slug)).valueChanges();
+  }
+
+  expandProjects(){
+    this.projectsExpanded=!this.projectsExpanded;
+    console.log(this.projectsExpanded)
   }
 
 }

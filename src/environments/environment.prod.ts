@@ -24,7 +24,8 @@ export const environment = {
       "back-end": "Back End Technologies",
       "front-end": "Front End Technologies",
       "db": "Database Technologies",
-      "support": "Support Technologies"
+      "support": "Support Technologies",
+      "resume":"Resume"
     },
     "ro-RO": {
       "projects": "Proiecte",
@@ -41,7 +42,8 @@ export const environment = {
       "back-end": "Tehnologii de server",
       "front-end": "Tehnologii de vizualizare",
       "db": "Baze de date",
-      "support": "Tehnologii de suport"
+      "support": "Tehnologii de suport",
+      "resume":"Curriculum Vitae"
     }
   }
 };
