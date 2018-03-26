@@ -7,5 +7,5 @@ export class Work {
     'date-start': Date;
     'date-end'?: Date;
     projects: string[];
-    expanded: boolean = false;
+    activity?:{ [key: string]: string };
 }
