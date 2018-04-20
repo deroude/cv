@@ -11,6 +11,7 @@ import { Skill } from './domain/skill';
 import { FreeText } from './domain/free-text';
 import fontawesome from '@fortawesome/fontawesome';
 import { faSkype, faGithub, faFacebook, faLinkedin } from '@fortawesome/fontawesome-free-brands';
+import { faEnvelope } from '@fortawesome/fontawesome-free-solid';
 
 const SCROLL_DELTA: number = 400;
 
@@ -39,7 +40,7 @@ export class AppComponent implements OnInit {
   @ViewChild('interestsAnchor') interestsAnchor: ElementRef;
 
   constructor(private titleService: Title, private langSvc: LangService, private db: AngularFirestore) {
-    fontawesome.library.add(faSkype, faFacebook, faGithub, faLinkedin);
+    fontawesome.library.add(faSkype, faFacebook, faGithub, faLinkedin,faEnvelope);
     this.i18n = langSvc;
   }
 
