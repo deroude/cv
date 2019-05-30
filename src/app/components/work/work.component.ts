@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LangService } from '../../services/lang/lang.service';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Project } from '../../domain/project';
 import { Work } from '../../domain/work';
 import fontawesome from '@fortawesome/fontawesome';
-import { faChevronCircleRight, faChevronCircleDown } from '@fortawesome/fontawesome-free-solid'
+import { faChevronCircleRight, faChevronCircleDown } from '@fortawesome/fontawesome-free-solid';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'work',
@@ -20,21 +20,21 @@ export class WorkComponent implements OnInit {
   @Input()
   work: Work;
 
-  projectsExpanded:boolean=false;
+  projectsExpanded = false;
 
   constructor(private langSvc: LangService, private db: AngularFirestore) {
     this.i18n = langSvc;
-    fontawesome.config.autoReplaceSvg=false;
+    fontawesome.config.autoReplaceSvg = false;
     fontawesome.library.add(faChevronCircleDown, faChevronCircleRight);
   }
 
   ngOnInit() {
-    this.projects$ = this.db.collection<Project>("projects", ref => ref.where("work", "==", this.work.slug)).valueChanges();
+    this.projects$ = this.db.collection<Project>('projects', ref => ref.where('work', '==', this.work.slug)).valueChanges();
   }
 
-  expandProjects(){
-    this.projectsExpanded=!this.projectsExpanded;
-    console.log(this.projectsExpanded)
+  expandProjects() {
+    this.projectsExpanded = !this.projectsExpanded;
+    console.log(this.projectsExpanded);
   }
 
 }

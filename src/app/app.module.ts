@@ -4,8 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+
 import { LangService } from './services/lang/lang.service';
 import { TranslatePipe } from './services/lang/translate.pipe';
 import { EducationComponent } from './components/education/education.component';
