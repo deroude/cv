@@ -5,8 +5,8 @@
   </div>
   <div class="resume-date text-md-right">
     <span class="text-primary">
-      <time [attr.datetime]="education['date-start']">{{education['date-start']|date}}</time> -
-      <time *ngIf="education['date-end']" [attr.datetime]="education['date-end']">{{education['date-end']|date}}</time>
+      <time [attr.datetime]="education['date-start']">{{education['date-start'].toDate()|date}}</time> -
+      <time *ngIf="education['date-end']" [attr.datetime]="education['date-end']">{{education['date-end'].toDate()|date}}</time>
     </span>
   </div>
 </div>

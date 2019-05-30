@@ -14,8 +14,8 @@
   </div>
   <div class="resume-date text-md-right">
     <span class="text-primary">
-      <time [attr.datetime]="work['date-start']">{{work['date-start']|date}}</time> -
-      <time *ngIf="work['date-end']" [attr.datetime]="work['date-end']">{{work['date-end']|date}}</time>
+      <time [attr.datetime]="work['date-start'].toDate()">{{work['date-start'].toDate()|date}}</time> -
+      <time *ngIf="work['date-end'] && work['date-end'].toDate" [attr.datetime]="work['date-end'].toDate()">{{work['date-end'].toDate()|date}}</time>
     </span>
   </div>
 </div>

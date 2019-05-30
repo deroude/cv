@@ -34,7 +34,6 @@ export class WorkComponent implements OnInit {
 
   expandProjects() {
     this.projectsExpanded = !this.projectsExpanded;
-    console.log(this.projectsExpanded);
   }
 
 }
