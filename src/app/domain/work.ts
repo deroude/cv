@@ -1,11 +1,9 @@
-import { firestore } from 'firebase';
-
 export class Work {
     slug: string;
     employer: string;
     role: { [key: string]: string };
-    'date-start': firestore.Timestamp;
-    'date-end'?: firestore.Timestamp;
+    'date-start': any;
+    'date-end'?: any;
     projects: string[];
-    activity?:{ [key: string]: string };
+    activity?: { [key: string]: string };
 }

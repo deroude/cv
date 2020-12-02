@@ -1,9 +1,7 @@
-import { firestore } from 'firebase';
-
 export class Education {
     id:string;
     institution: { [key: string]: string };
-    'date-start': firestore.Timestamp;
-    'date-end': firestore.Timestamp;
+    'date-start': any;
+    'date-end':any;
     comments: { [key: string]: string };
 }

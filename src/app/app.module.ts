@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { LangService } from './services/lang/lang.service';
 import { TranslatePipe } from './services/lang/translate.pipe';
@@ -28,7 +27,7 @@ import { SkillComponent } from './components/skill/skill.component';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot(),
+    NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
