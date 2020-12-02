@@ -60,7 +60,7 @@
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
-            <p class="mb-5" *ngIf="freeTexts">{{getFreeText('intro')}}</p>
+            <div class="mb-5" *ngIf="freeTexts" [innerHtml]="getFreeText('intro')"></div>
         </div>
     </section>
 
